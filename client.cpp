@@ -1,3 +1,11 @@
+//
+//  client.cpp
+//  FlexibleComputerLanguage
+//
+//  Created by Murtaza Anverali on 7/4/18.
+//  Copyright © 2018 Murtaza Anverali. All rights reserved.
+//
+
 // C program to implement one side of FIFO
 // This side writes first, then reads
 #include <stdio.h>
