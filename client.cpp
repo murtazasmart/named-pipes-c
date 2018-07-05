@@ -16,7 +16,8 @@
 #include <unistd.h>
 #include <string.h>
 #include <iostream>
-using namespace std;
+
+#include "NamedPipeOperations.h"
  
 int main()
 {
@@ -95,25 +96,7 @@ int main()
         fd1 = open(fifosout, O_RDONLY);
         std::cout << "New start.." << std::endl;
         // First open in read only and read
-        std::string queryObject;
-        while (1)
-        {
-            int read2result = read(fd1, str2, BUF_SIZE);
-            // std::cout << "read2result is " << read2result << std::endl;
-            // std::cout << str2 << std::endl;
-            if (read2result < BUF_SIZE && read2result >= 0)
-            {
-                if (read2result != 0)
-                {
-                    queryObject += str2;
-                }
-                break;
-            }
-            queryObject += str2;
-            memset(str2, 0, sizeof(str2));
-        }
-        std::cout << "The result is " << queryObject << std::endl;
-        queryObject = "";
+        std::string queryObject = NamedPipeOperations::readFromPipe(fd1);
         close(fd1);
         // END
 

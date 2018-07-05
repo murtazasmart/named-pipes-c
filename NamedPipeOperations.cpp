@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <iostream>
 #include "NamedPipeOperations.h"
+#include <string.h>
 
 std::string NamedPipeOperations::readFromPipe(int fd)
 {
