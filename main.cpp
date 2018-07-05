@@ -1,3 +1,11 @@
+//
+//  main.cpp
+//  FlexibleComputerLanguage
+//
+//  Created by Murtaza Anverali on 7/4/18.
+//  Copyright © 2018 Murtaza Anverali. All rights reserved.
+//
+
 #include <iostream>
 // #include <unistd.h>
 #include <sys/wait.h>
