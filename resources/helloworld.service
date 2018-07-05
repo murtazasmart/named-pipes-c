@@ -1,0 +1,13 @@
+[Unit]
+Description=HelloWorld demo service
+After=network.target
+StartLimitIntervalSec=10
+
+[Service]
+Type=simple
+RestartSec=1
+User=root
+ExecStart=/home/murtaza/99X/C++/HelloWorld/main
+    
+[Install]
+WantedBy=multi-user.target
