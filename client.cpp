@@ -96,7 +96,13 @@ int main()
         fd1 = open(fifosout, O_RDONLY);
         std::cout << "New start.." << std::endl;
         // First open in read only and read
-        std::string queryObject = NamedPipeOperations::readFromPipe(fd1);
+        // std::string queryObject = NamedPipeOperations::readFromPipe(fd1);
+        FILE *stream;
+        int c;
+        stream = fdopen (fd1, "r");
+        while ((c = fgetc (stream)) != EOF)
+            putchar (c);
+        fclose (stream);
         close(fd1);
         // END
 

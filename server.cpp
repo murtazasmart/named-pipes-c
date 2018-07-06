@@ -44,7 +44,17 @@ int main()
         std::cout << "New start.." << std::endl;
         // First open in read only and read
 
-        std::string queryObject = NamedPipeOperations::readFromPipe(fdin);
+        // std::string queryObject = NamedPipeOperations::readFromPipe(fdin);
+        std::string queryObject = "";
+        FILE *stream;
+        int c;
+        stream = fdopen (fdin, "r");
+        while ((c = fgetc (stream)) != EOF)
+        {
+            // putchar (c);
+            queryObject = queryObject + (char)c;
+        }
+        fclose (stream);
 
         close(fdin);
         // END
@@ -56,7 +66,11 @@ int main()
         // Open FIFO for write only
         fdout = open(fifosout, O_WRONLY);
 
-        NamedPipeOperations::writeToPipe(fdout, s);
+        // NamedPipeOperations::writeToPipe(fdout, s);
+        // FILE *stream;
+        stream = fdopen (fdout, "w");
+        fprintf (stream, (char *)queryObject.c_str());
+        fclose (stream);
 
         close(fdout);
 
